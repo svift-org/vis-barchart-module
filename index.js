@@ -5,6 +5,8 @@ SVIFT.vis.barchart = (function (data, root) {
  
   module.setup = function () {
     module.svg.append('rect')
+      .attr('x', module.config.padding.left)
+      .attr('y', module.config.padding.top)
       .style('stroke','#000')
       .style('fill','transparent');
 
@@ -17,6 +19,7 @@ SVIFT.vis.barchart = (function (data, root) {
 
   module.resize = function () {
     var bb = module.svg.node().getBBox();
+    console.log(bb);
     module.svg.select('rect')
       .attr('width', bb.width)
       .attr('height', bb.height);
