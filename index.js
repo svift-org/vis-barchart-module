@@ -4,8 +4,12 @@ SVIFT.vis.barchart = (function (data, root) {
   var module = SVIFT.vis.base(data, root);
  
   module.setup = function () {
-    module.svg.append('rect');
+    module.svg.append('rect')
+      .style('stroke','#000')
+      .style('fill','transparent');
+
     module.svg.append('text')
+      .style('fill','#000')
       .attr('dx',50)
       .attr('dy',50)
       .text('Hello World');
