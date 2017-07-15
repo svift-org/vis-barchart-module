@@ -18,7 +18,7 @@ SVIFT.vis.barchart = (function (data, root) {
   };
 
   module.resize = function () {
-    var bb = root.node().getBBox();
+    var bb = module.root.node().getBBox();
     console.log(bb);
     module.svg.select('rect')
       .attr('width', bb.width)
