@@ -18,10 +18,11 @@ SVIFT.vis.barchart = (function (data, container) {
   };
 
   module.resize = function () {
-    var bb = module.container.node();
+    var width = module.container.node().offsetWidth,
+      height = module.container.node().offsetHeight;
     module.g.select('rect')
-      .attr('width', bb.width)
-      .attr('height', bb.height);
+      .attr('width', width-(module.config.margin.top+module.config.margin.bottom))
+      .attr('height', height-(module.config.margin.left+module.config.margin.right));
   };
 
   return module;
