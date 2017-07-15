@@ -5,8 +5,6 @@ SVIFT.vis.barchart = (function (data, container) {
  
   module.setup = function () {
     module.g.append('rect')
-      .attr('x', module.config.margin.left)
-      .attr('y', module.config.margin.top)
       .style('stroke','#000')
       .style('fill','transparent');
 
