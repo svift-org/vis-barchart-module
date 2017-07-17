@@ -3,7 +3,7 @@ SVIFT.vis.barchart = (function (data, container) {
   // Module object
   var module = SVIFT.vis.base(data, container);
  
-  module.timeline {
+  module.timeline = {
     rect: {start:0, end:5000, func:module.drawRect, obj:{ease:d3.easeCubicInOut, interpolate:null}}
   };
 
