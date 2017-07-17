@@ -3,10 +3,6 @@ SVIFT.vis.barchart = (function (data, container) {
   // Module object
   var module = SVIFT.vis.base(data, container);
  
-  module.timeline = {
-    rect: {start:0, end:5000, func:module.drawRect, obj:{ease:d3.easeCubicInOut, interpolate:null}}
-  };
-
   module.setup = function () {
     module.g.append('rect')
       .attr('width', 50)
@@ -26,6 +22,10 @@ SVIFT.vis.barchart = (function (data, container) {
 
   module.drawRect = function(t){
     module.g.select('rect').attr('x', module.timeline.rect.obj.interpolate(module.timeline.rect.obj.ease(t)));
+  };
+
+  module.timeline = {
+    rect: {start:0, end:5000, func:module.drawRect, obj:{ease:d3.easeCubicInOut, interpolate:null}}
   };
 
   return module;
