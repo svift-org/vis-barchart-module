@@ -28,11 +28,11 @@ SVIFT.vis.barchart = (function (data, container) {
   };
 
   module.resize = function () {
-    var width = module.container.node().offsetWidth - module.config.margin.left - module.config.margin.right,
-      height = module.container.node().offsetHeight - module.config.margin.top - module.config.margin.bottom;
+    var width = module.container.node().offsetWidth - module.config.margin.left - module.config.margin.right - module.d3config.axisWidth,
+      height = module.container.node().offsetHeight - module.config.margin.top - module.config.margin.bottom - module.d3config.axisHeight;
 
-    module.d3config.x.range([0,width-module.d3config.axisWidth])
-    module.d3config.y.range([height-module.d3config.axisHeight,0])
+    module.d3config.x.range([0,width])
+    module.d3config.y.range([height,0])
 
     module.d3config.xAxis.scale(module.d3config.x)
     module.d3config.gXAxis.call(module.d3config.xAxis)
@@ -40,14 +40,14 @@ SVIFT.vis.barchart = (function (data, container) {
     module.d3config.yAxis.scale(module.d3config.y)
     module.d3config.gYAxis.call(module.d3config.yAxis)
 
-    module.d3config.gXAxis.attr('transform','translate('+module.d3config.axisWidth+','+(height-module.d3config.axisHeight)+')')
+    module.d3config.gXAxis.attr('transform','translate('+module.d3config.axisWidth+','+height+')')
 
     module.d3config.bars
       .attr('x', function(d){ return module.d3config.x(d[0])+module.d3config.axisWidth; })
       .attr("width", module.d3config.x.bandwidth())
 
     data.data.data.forEach(function(d,i){
-      module.d3config.yInterpolate[i] = d3.interpolate(height-module.d3config.axisHeight, module.d3config.y(d[1]));
+      module.d3config.yInterpolate[i] = d3.interpolate(height, module.d3config.y(d[1]));
       module.d3config.hInterpolate[i] = d3.interpolate(0, height-module.d3config.y(d[1]));
     })
     
