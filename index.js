@@ -19,7 +19,7 @@ SVIFT.vis.barchart = (function (data, container) {
     module.d3config.xAxis = d3.axisBottom();
 
     module.d3config.gXAxis = module.g.append('g')
-    module.d3config.gYAxis = module.g.append('g').attr('transform','translate('+module.d3config.axisWidth+',0)')
+    module.d3config.gYAxis = module.g.append('g').attr('transform','translate('+(module.d3config.axisWidth-1)+',0)')
 
     module.d3config.bars = module.g.append('g').selectAll('rect').data(data.data.data).enter().append('rect')
       .attr('x', module.d3config.axisWidth)
