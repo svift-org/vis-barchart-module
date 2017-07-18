@@ -12,6 +12,19 @@ SVIFT.vis.barchart = (function (data, container) {
 
   module.setup = function () {
 
+    var defs = moduel.svg.append('defs');
+    data.forEach(function(d,i){
+      var lg = defs.append('linearGradient')
+        .attr('id','grad'+i)
+        .attr('x1','0%')
+        .attr('y1','0%')
+        .attr('y2','0%')
+        .attr('x2','100%');
+
+      lg.append('offset').attr('offset','0%').style('stop-color','rgb('+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+')').style('stop-opacity','1');
+      lg.append('offset').attr('offset','100%').style('stop-color','rgb('+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+')').style('stop-opacity','1');
+    })
+
     module.d3config.y = d3.scaleBand().padding(0.1).domain(data.data.data.map(function(d) { return d[0]; }));
     module.d3config.yAxis = d3.axisLeft();
 
@@ -24,8 +37,8 @@ SVIFT.vis.barchart = (function (data, container) {
     module.d3config.bars = module.g.append('g').selectAll('rect').data(data.data.data).enter().append('rect')
       .attr('x', module.d3config.axisWidth)
       .style('stroke','transparent')
-      .style('fill', function(d){
-        return 'rgb('+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+')';
+      .style('fill', function(d,i){
+        return 'url(#grad'+i+')';
       });
   };
 
