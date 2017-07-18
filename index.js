@@ -46,7 +46,7 @@ SVIFT.vis.barchart = (function (data, container) {
   };
 
   module.drawBars = function(t){
-    module.d3config.bars
+    module.timeline.bars
       .attr('y',      module.timeline.bars.obj.yinterpolate(module.timeline.rect.obj.ease(t)))
       .attr('height', module.timeline.bars.obj.hinterpolate(module.timeline.rect.obj.ease(t)));
   };
