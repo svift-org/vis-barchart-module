@@ -3,29 +3,56 @@ SVIFT.vis.barchart = (function (data, container) {
   // Module object
   var module = SVIFT.vis.base(data, container);
  
+  module.d3config = {
+    axisWidth : 50,
+    axisHeight : 50
+  }
+
   module.setup = function () {
-    module.g.append('rect')
-      .attr('width', 50)
-      .attr('height', 50)
-      .attr('y', 50)
-      .attr('x', 50)
-      .style('stroke','#000')
-      .style('fill','transparent');
+
+    module.d3config.x = d3.scaleBand().padding(0.1).domain(data.data.data.map(function(d) { return d[0]; }));
+    module.d3config.xAxis = d3.axisBottom().scale(module.d3config.x);
+
+    module.d3config.y = d3.scaleLinear().domain(data.data.data, function(d){return d[1]});
+    module.d3config.yAxis = d3.axisLeft().scale(module.d3config.y);
+
+    module.d3config.gXAxis = module.g.append('g')
+    module.d3config.gYAxis = module.g.append('g')
+
+    module.d3config.bars = module.g.append('g').selectAll('rect').data(data.data.data).enter().append('rect')
+      .style('stroke','transparent')
+      .style('fill','#000');
   };
 
   module.resize = function () {
-    var width = module.container.node().offsetWidth,
-      height = module.container.node().offsetHeight;
+    var width = module.container.node().offsetWidth - module.config.margin.left - module.config.margin.right,
+      height = module.container.node().offsetHeight - module.config.margin.top - module.config.margin.bottom;
 
-    module.timeline.rect.obj.interpolate = d3.interpolate(50, width-100);
+    module.d3config.x.range([0,width-module.d3config.axisWidth])
+    module.d3config.y.range([height-module.d3config.axisHeight,0])
+
+    module.d3config.gXAxis.attr('transform','translate('+module.d3config.axisWidth+','+(height-module.d3config.axisHeight)+')')
+
+    module.d3config.bars
+      .attr('x', function(d){ return module.d3config.x(d[0]); });
+      .attr("width", module.d3config.x.bandwidth())
+
+    data.data.data.forEach(function(d,i){
+      module.timeline.bars.obj.yInterpolate[i] = d3.interpolate(height-module.d3config.axisHeight, height-module.d3config.axisHeight-module.d3config.y(d[1]));
+      module.timeline.bars.obj.hInterpolate[i] = d3.interpolate(0, module.d3config.y(d[1]));
+    })
+    
+    module.drawBars(module.playHead)
   };
 
-  module.drawRect = function(t){
-    module.g.select('rect').attr('x', module.timeline.rect.obj.interpolate(module.timeline.rect.obj.ease(t)));
+  module.drawBars = function(t){
+    module.d3config.bars
+      .attr('y',      module.timeline.bars.obj.yinterpolate(module.timeline.rect.obj.ease(t)))
+      .attr('height', module.timeline.bars.obj.hinterpolate(module.timeline.rect.obj.ease(t)));
   };
 
   module.timeline = {
-    rect: {start:0, end:5000, func:module.drawRect, obj:{ease:d3.easeCubicInOut, interpolate:null}}
+    bars: {start:0, end:3000, func:module.drawBars, obj:{ease:d3.easeCubicInOut, yInterpolate:[], , hInterpolate:[]}}
   };
 
   return module;
