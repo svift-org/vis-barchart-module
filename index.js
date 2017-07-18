@@ -34,6 +34,12 @@ SVIFT.vis.barchart = (function (data, container) {
     module.d3config.x.range([0,width-module.d3config.axisWidth])
     module.d3config.y.range([height-module.d3config.axisHeight,0])
 
+    module.d3config.xAxis.scale(module.d3config.x)
+    module.d3config.gXAxis.call(module.d3config.xAxis)
+
+    module.d3config.yAxis.scale(module.d3config.y)
+    module.d3config.gYAxis.call(module.d3config.yAxis)
+
     module.d3config.gXAxis.attr('transform','translate('+module.d3config.axisWidth+','+(height-module.d3config.axisHeight)+')')
 
     module.d3config.bars
