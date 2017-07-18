@@ -13,10 +13,10 @@ SVIFT.vis.barchart = (function (data, container) {
   module.setup = function () {
 
     module.d3config.y = d3.scaleBand().padding(0.1).domain(data.data.data.map(function(d) { return d[0]; }));
-    module.d3config.yAxis = d3.axisBottom();
+    module.d3config.yAxis = d3.axisLeft();
 
     module.d3config.x = d3.scaleLinear().domain([0, d3.max(data.data.data, function(d){return d[1]})]);
-    module.d3config.xAxis = d3.axisLeft();
+    module.d3config.xAxis = d3.axisBottom();
 
     module.d3config.gXAxis = module.g.append('g')
     module.d3config.gYAxis = module.g.append('g').attr('transform','translate('+module.d3config.axisWidth+',0)')
