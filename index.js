@@ -12,11 +12,11 @@ SVIFT.vis.barchart = (function (data, container) {
 
   module.setup = function () {
 
-    module.d3config.y = d3.scaleBand().padding(0.1).domain(data.data.data.map(function(d) { return d[1]; }));
-    module.d3config.yAxis = d3.axisBottom().scale(module.d3config.y);
+    module.d3config.y = d3.scaleBand().padding(0.1).domain(data.data.data.map(function(d) { return d[0]; }));
+    module.d3config.yAxis = d3.axisBottom();
 
-    module.d3config.x = d3.scaleLinear().domain([0, d3.max(data.data.data, function(d){return d[0]})]);
-    module.d3config.xAxis = d3.axisLeft().scale(module.d3config.x);
+    module.d3config.x = d3.scaleLinear().domain([0, d3.max(data.data.data, function(d){return d[1]})]);
+    module.d3config.xAxis = d3.axisLeft();
 
     module.d3config.gXAxis = module.g.append('g')
     module.d3config.gYAxis = module.g.append('g').attr('transform','translate('+module.d3config.axisWidth+',0)')
@@ -43,11 +43,11 @@ SVIFT.vis.barchart = (function (data, container) {
     module.d3config.gXAxis.attr('transform','translate('+module.d3config.axisWidth+','+height+')')
 
     module.d3config.bars
-      .attr('y', function(d){ return module.d3config.y(d[1]); })
+      .attr('y', function(d){ return module.d3config.y(d[0]); })
       .attr("height", module.d3config.y.bandwidth())
 
     data.data.data.forEach(function(d,i){
-      module.d3config.wInterpolate[i] = d3.interpolate(0, module.d3config.x(d[0]));
+      module.d3config.wInterpolate[i] = d3.interpolate(0, module.d3config.x(d[1]));
     })
     
     module.drawBars(module.playHead)
