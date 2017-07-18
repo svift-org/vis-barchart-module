@@ -25,7 +25,7 @@ SVIFT.vis.barchart = (function (data, container) {
       .attr('x', module.d3config.axisWidth)
       .style('stroke','transparent')
       .style('fill', function(d){
-        return 'rgb('+Math.random()*255+','+Math.random()*255+','+Math.random()*255+')';
+        return 'rgb('+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+')';
       });
   };
 
