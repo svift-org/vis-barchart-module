@@ -47,8 +47,8 @@ SVIFT.vis.barchart = (function (data, container) {
       .attr("width", module.d3config.x.bandwidth())
 
     data.data.data.forEach(function(d,i){
-      module.d3config.yInterpolate[i] = d3.interpolate(height-module.d3config.axisHeight-module.d3config.y(d[1]), height-module.d3config.axisHeight);
-      module.d3config.hInterpolate[i] = d3.interpolate(module.d3config.y(d[1]), 0);
+      module.d3config.yInterpolate[i] = d3.interpolate(height-module.d3config.axisHeight, height-module.d3config.axisHeight-module.d3config.y(d[1]));
+      module.d3config.hInterpolate[i] = d3.interpolate(0, height-module.d3config.y(d[1]));
     })
     
     module.drawBars(module.playHead)
