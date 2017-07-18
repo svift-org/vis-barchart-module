@@ -32,7 +32,7 @@ SVIFT.vis.barchart = (function (data, container) {
       height = module.container.node().offsetHeight - module.config.margin.top - module.config.margin.bottom - module.d3config.axisHeight;
 
     module.d3config.x.range([0,width])
-    module.d3config.y.range([height,0])
+    module.d3config.y.range([0,height])
 
     module.d3config.xAxis.scale(module.d3config.x)
     module.d3config.gXAxis.call(module.d3config.xAxis)
