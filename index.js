@@ -50,8 +50,8 @@ SVIFT.vis.barchart = (function (data, container) {
 
   module.drawBars = function(t){
     module.timeline.bars
-      .attr('y',      module.d3config.yinterpolate(module.d3config.ease(t)))
-      .attr('height', module.d3config.hinterpolate(module.d3config.ease(t)));
+      .attr('y',      function(d,i){ return module.d3config.yInterpolate[i](module.d3config.ease(t)) })
+      .attr('height', function(d,i){ return module.d3config.hInterpolate[i](module.d3config.ease(t)) });
   };
 
   module.timeline = {
