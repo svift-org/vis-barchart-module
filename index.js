@@ -52,7 +52,7 @@ SVIFT.vis.barchart = (function (data, container) {
   };
 
   module.timeline = {
-    bars: {start:0, end:3000, func:module.drawBars, obj:{ease:d3.easeCubicInOut, yInterpolate:[], , hInterpolate:[]}}
+    bars: {start:0, end:3000, func:module.drawBars, obj:{ease:d3.easeCubicInOut, yInterpolate:[], hInterpolate:[]}}
   };
 
   return module;
