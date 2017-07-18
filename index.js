@@ -34,7 +34,7 @@ SVIFT.vis.barchart = (function (data, container) {
     module.d3config.gXAxis.attr('transform','translate('+module.d3config.axisWidth+','+(height-module.d3config.axisHeight)+')')
 
     module.d3config.bars
-      .attr('x', function(d){ return module.d3config.x(d[0]); });
+      .attr('x', function(d){ return module.d3config.x(d[0]); })
       .attr("width", module.d3config.x.bandwidth())
 
     data.data.data.forEach(function(d,i){
