@@ -36,8 +36,8 @@ SVIFT.vis.barchart = (function (data, container) {
     module.d3config.bars = module.g.append('g').selectAll('rect').data(data.data.data).enter().append('rect')
       .attr('x', module.d3config.axisWidth)
       .style('stroke','transparent')
-      .attr('fill', function(d,i){
-        return 'url(#grad'+i+')';
+      .style('fill', function(d,i){
+        return 'url("#grad'+i+'")';
       });
   };
 
