@@ -49,7 +49,7 @@ SVIFT.vis.barchart = (function (data, container) {
   };
 
   module.drawBars = function(t){
-    module.timeline.bars
+    module.d3config.bars
       .attr('y',      function(d,i){ return module.d3config.yInterpolate[i](module.d3config.ease(t)) })
       .attr('height', function(d,i){ return module.d3config.hInterpolate[i](module.d3config.ease(t)) });
   };
