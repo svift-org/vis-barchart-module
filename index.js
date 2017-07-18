@@ -50,7 +50,7 @@ SVIFT.vis.barchart = (function (data, container) {
       module.d3config.wInterpolate[i] = d3.interpolate(0, module.d3config.x(d[1]));
     })
     
-    module.drawBars(module.playHead)
+    module.drawBars(module.playHead/module.playTime)
   };
 
   module.drawBars = function(t){
