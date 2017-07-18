@@ -12,7 +12,7 @@ SVIFT.vis.barchart = (function (data, container) {
 
   module.setup = function () {
 
-    var defs = moduel.svg.append('defs');
+    var defs = module.svg.append('defs');
     data.forEach(function(d,i){
       var lg = defs.append('linearGradient')
         .attr('id','grad'+i)
