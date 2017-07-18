@@ -5,7 +5,10 @@ SVIFT.vis.barchart = (function (data, container) {
  
   module.d3config = {
     axisWidth : 50,
-    axisHeight : 50
+    axisHeight : 50,
+    ease:d3.easeCubicInOut, 
+    yInterpolate:[], 
+    hInterpolate:[]
   }
 
   module.setup = function () {
@@ -38,8 +41,8 @@ SVIFT.vis.barchart = (function (data, container) {
       .attr("width", module.d3config.x.bandwidth())
 
     data.data.data.forEach(function(d,i){
-      module.timeline.bars.obj.yInterpolate[i] = d3.interpolate(height-module.d3config.axisHeight, height-module.d3config.axisHeight-module.d3config.y(d[1]));
-      module.timeline.bars.obj.hInterpolate[i] = d3.interpolate(0, module.d3config.y(d[1]));
+      module.d3config.yInterpolate[i] = d3.interpolate(height-module.d3config.axisHeight, height-module.d3config.axisHeight-module.d3config.y(d[1]));
+      module.d3config.hInterpolate[i] = d3.interpolate(0, module.d3config.y(d[1]));
     })
     
     module.drawBars(module.playHead)
@@ -47,12 +50,12 @@ SVIFT.vis.barchart = (function (data, container) {
 
   module.drawBars = function(t){
     module.timeline.bars
-      .attr('y',      module.timeline.bars.obj.yinterpolate(module.timeline.rect.obj.ease(t)))
-      .attr('height', module.timeline.bars.obj.hinterpolate(module.timeline.rect.obj.ease(t)));
+      .attr('y',      module.d3config.yinterpolate(module.d3config.ease(t)))
+      .attr('height', module.d3config.hinterpolate(module.d3config.ease(t)));
   };
 
   module.timeline = {
-    bars: {start:0, end:3000, func:module.drawBars, obj:{ease:d3.easeCubicInOut, yInterpolate:[], hInterpolate:[]}}
+    bars: {start:0, end:3000, func:module.drawBars}
   };
 
   return module;
