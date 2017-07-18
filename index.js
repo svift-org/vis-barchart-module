@@ -20,8 +20,8 @@ SVIFT.vis.barchart = (function (data, container) {
         .attr('y2','0%')
         .attr('x2','100%');
 
-      lg.append('offset').attr('offset','0%').style('stop-color','rgb('+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+')').style('stop-opacity','1');
-      lg.append('offset').attr('offset','100%').style('stop-color','rgb('+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+')').style('stop-opacity','1');
+      lg.append('offset').attr('offset','0%').attr('stop-color','rgb('+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+')').attr('stop-opacity','1');
+      lg.append('offset').attr('offset','100%').attr('stop-color','rgb('+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+')').attr('stop-opacity','1');
     })
 
     module.d3config.y = d3.scaleBand().padding(0.1).domain(data.data.data.map(function(d) { return d[0]; }));
