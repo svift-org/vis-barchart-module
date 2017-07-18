@@ -28,8 +28,6 @@ SVIFT.vis.barchart = (function (data, container) {
   };
 
   module.resize = function () {
-    window.callPhantom({ msg: 'resize' });
-
     var width = module.container.node().offsetWidth - module.config.margin.left - module.config.margin.right - module.d3config.axisWidth,
       height = module.container.node().offsetHeight - module.config.margin.top - module.config.margin.bottom - module.d3config.axisHeight;
 
