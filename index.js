@@ -24,7 +24,9 @@ SVIFT.vis.barchart = (function (data, container) {
     module.d3config.bars = module.g.append('g').selectAll('rect').data(data.data.data).enter().append('rect')
       .attr('x', module.d3config.axisWidth)
       .style('stroke','transparent')
-      .style('fill','#000');
+      .style('fill',function(d){
+        return 'rgb('+Math.random()*255+','+Math.random()*255+','+Math.random()*255+')';
+      });
   };
 
   module.resize = function () {
