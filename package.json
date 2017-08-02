@@ -16,7 +16,7 @@
   "license": "MIT",
   "homepage": "https://bitbucket.org/svift/vis-barchart-module#readme",
   "devDependencies": {
-   "fs": "0.0.1-security",
+    "fs": "0.0.1-security",
     "jshint": "^2.9.5",
     "node-sass": "^4.5.3",
     "svift-helper": "git+ssh://git@bitbucket.org/svift/helper-module.git",
