@@ -2,6 +2,7 @@
   "name": "svift-vis-barchart",
   "version": "1.0.0",
   "description": "Barchart visualisation",
+  "title":"Barchart",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

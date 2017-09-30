@@ -1,1 +1,2 @@
-# SVIFT.vis.barchart
+# Barchart
+## SVIFT.vis.barchart

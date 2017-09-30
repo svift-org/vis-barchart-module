@@ -3,7 +3,8 @@
       "dev":true
     },
     "vis":{
-      "type":"columnchart"
+      "type":"barnchart",
+      "title":"Barchart"
     },
     "data":{
       "columns":["Jahr","Wert"],
