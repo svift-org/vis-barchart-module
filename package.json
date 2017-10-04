@@ -1,9 +1,13 @@
 {
   "name": "svift-vis-barchart",
   "version": "1.0.0",
-  "description": "Barchart visualisation",
-  "title":"Barchart",
-  "main": "index.js",
+  "definition": {
+    "name":"barchart",
+    "description": "Barchart visualisation",
+    "title":"Barchart",
+    "input": "table"
+  },
+    "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "jshint index.js",

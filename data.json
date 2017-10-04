@@ -3,7 +3,7 @@
       "dev":true
     },
     "vis":{
-      "type":"barnchart",
+      "type":"barchart",
       "title":"Barchart"
     },
     "data":{
